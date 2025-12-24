@@ -11,10 +11,8 @@
         :root {
             /* Blue color scheme based on typical Brain/tech logos */
             --primary-blue: #3B82F6;        /* Primary blue */
-            --accent-blue: #60A5FA;         /* Lighter accent blue */
             --dark-blue: #1E3A8A;           /* Dark blue for backgrounds */
             --medium-blue: #1E40AF;         /* Medium blue */
-            --light-blue: #93C5FD;          /* Light blue for accents */
             
             /* Background colors - Light dark blue theme */
             --bg-main: #0F172A;             /* Very dark blue */
@@ -221,22 +219,6 @@
             border: 1px solid var(--border-light);
         }
         
-        .logo-large {
-            height: 100px;                    /* Slightly smaller */
-            margin-bottom: 30px;
-            width: auto;
-            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
-            animation: logoFloat 6s infinite ease-in-out;
-        }
-        
-        @keyframes logoFloat {
-            0%, 100% {
-                transform: translateY(0) scale(1);
-            }
-            50% {
-                transform: translateY(-10px) scale(1.02);
-            }
-        }
         
         .logo-intro h1 {
             font-size: 3rem;                  /* Slightly smaller */
@@ -1553,32 +1535,6 @@
             Register Now
         </a>
     </div>
-
-    <!-- LOGO INTRO SECTION -->
-    <section id="logo-intro" class="logo-intro">
-        <!-- Blue elements added via JavaScript -->
-        <div class="container">
-            <div class="logo-intro-content fade-in">
-                <img src="Picture1.png" alt="BrainLink Logo" class="logo-large">
-                <h1>BRAINLINK</h1>
-                <p class="logo-description">
-                    Where brilliant minds connect to solve real-world challenges. BrainLink brings together Algeria's most promising business and engineering talent to create impactful solutions with industry leaders.
-                </p>
-                <div class="logo-subtitle">Innovation Competition 2024 | Organized by The Elite Club</div>
-                
-                <div class="hero-buttons" style="margin-top: 40px;">
-                    <a href="#register" class="btn btn-primary">
-                        Join the Competition
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                    <a href="#about" class="btn btn-secondary">
-                        Discover More
-                        <i class="fas fa-compass"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- HERO SECTION -->
     <section id="hero" class="hero">
