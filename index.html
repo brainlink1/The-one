@@ -7,35 +7,34 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* ===== INSPIRED COLOR SCHEME - COLD RED & MODERN ===== */
+        /* ===== BRAND IDENTITY COLORS & TYPOGRAPHY ===== */
         :root {
-            /* COLD RED TONES - LESS INTENSE */
-            --cold-red: #D32F2F;           /* Cooler, darker red */
-            --cold-red-light: #EF5350;     /* Lighter cold red */
-            --cold-red-dark: #B71C1C;      /* Dark cold red */
-            --cold-red-subtle: #FFCDD2;    /* Very subtle cold red */
+            /* SEPARATE RED & BLUE COLORS - NOT MIXED */
+            --primary-red: #FF4757;        /* Cooler red - less aggressive */
+            --accent-red: #FF6B81;         /* Brighter but cooler red */
+            --dark-red: #C44569;           /* Darker, cooler red for depth */
+            --cold-red: #E84393;           /* Cold red for accents */
+            --dark-blue: #1A365D;          /* Dark Blue for text */
+            --medium-blue: #2D3748;        /* Medium Blue */
+            --light-blue: #4A5568;         /* Light Blue for subtle text */
             
-            /* DARK BACKGROUND COLORS */
-            --bg-dark: #121212;
-            --bg-darker: #0A0A0A;
-            --bg-card-dark: #1E1E1E;
+            /* Backgrounds */
+            --bg-main: #0F172A;
+            --bg-section: #0F172A;
+            --bg-card: #1E293B;
             
-            /* TEXT COLORS */
-            --text-light: #F5F5F5;
-            --text-muted: #B0B0B0;
-            --text-white: #FFFFFF;
+            /* UI Colors */
+            --white: #FFFFFF;
+            --border-light: rgba(255, 255, 255, 0.1);
             
-            /* ACCENTS */
-            --accent-blue: #2196F3;
-            --accent-teal: #26A69A;
-            
-            /* EFFECTS */
-            --shadow-dark: 0 8px 32px rgba(0, 0, 0, 0.4);
-            --shadow-light: 0 4px 16px rgba(0, 0, 0, 0.3);
+            /* Effects */
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.15);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.2);
+            --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.3);
             --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             
-            /* HEADER */
-            --header-height: 100px;
+            /* 3D Header Effect */
+            --header-height: 80px;
         }
         
         /* ===== BASE STYLES ===== */
@@ -52,8 +51,8 @@
         
         body {
             font-family: 'Manrope', sans-serif;
-            background: var(--bg-dark);
-            color: var(--text-light);
+            background: var(--bg-main);
+            color: var(--white);
             line-height: 1.7;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
@@ -76,166 +75,285 @@
         section {
             padding: 100px 0;
             position: relative;
+            background: var(--bg-section);
         }
         
-        /* ===== INSPIRED BACKGROUND PATTERN ===== */
-        .creative-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            background: 
-                linear-gradient(45deg, var(--bg-darker) 25%, transparent 25%) 0 0,
-                linear-gradient(-45deg, var(--bg-darker) 25%, transparent 25%) 0 0,
-                linear-gradient(45deg, transparent 75%, var(--bg-darker) 75%) 0 0,
-                linear-gradient(-45deg, transparent 75%, var(--bg-darker) 75%) 0 0;
-            background-color: var(--bg-dark);
-            background-size: 100px 100px;
-            opacity: 0.3;
-        }
-        
-        /* COLD RED GEOMETRIC OVERLAY */
-        .geometric-overlay {
+        /* ===== COMPLEX BACKGROUND PATTERN ===== */
+        .complex-background {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -1;
+            pointer-events: none;
             overflow: hidden;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(232, 67, 147, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 80% 20%, rgba(255, 107, 129, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 40% 40%, rgba(255, 71, 87, 0.05) 0%, transparent 40%),
+                linear-gradient(135deg, #0F172A 0%, #1E1B4B 100%);
+        }
+        
+        /* Geometric patterns */
+        .geometric-pattern {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(30deg, var(--cold-red) 12%, transparent 12.5%, transparent 87%, var(--cold-red) 87.5%, var(--cold-red)),
+                linear-gradient(150deg, var(--cold-red) 12%, transparent 12.5%, transparent 87%, var(--cold-red) 87.5%, var(--cold-red)),
+                linear-gradient(30deg, var(--cold-red) 12%, transparent 12.5%, transparent 87%, var(--cold-red) 87.5%, var(--cold-red)),
+                linear-gradient(150deg, var(--cold-red) 12%, transparent 12.5%, transparent 87%, var(--cold-red) 87.5%, var(--cold-red)),
+                linear-gradient(60deg, rgba(255, 71, 87, 0.25) 25%, transparent 25.5%, transparent 75%, rgba(255, 71, 87, 0.25) 75%, rgba(255, 71, 87, 0.25)),
+                linear-gradient(60deg, rgba(255, 71, 87, 0.25) 25%, transparent 25.5%, transparent 75%, rgba(255, 71, 87, 0.25) 75%, rgba(255, 71, 87, 0.25));
+            background-size: 80px 140px;
+            background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+            opacity: 0.07;
+        }
+        
+        /* Cold red floating elements */
+        .cold-red-element {
+            position: absolute;
+            z-index: 0;
             opacity: 0.15;
         }
         
-        .geometric-shape {
-            position: absolute;
-            border: 1px solid var(--cold-red);
-            opacity: 0.3;
-            animation: floatShape 20s infinite ease-in-out;
-        }
-        
-        .shape-circle {
-            border-radius: 50%;
-            background: radial-gradient(circle, var(--cold-red) 0%, transparent 70%);
-        }
-        
-        .shape-square {
-            background: linear-gradient(45deg, var(--cold-red), transparent);
-        }
-        
-        .shape-triangle {
-            width: 0;
-            height: 0;
-            border-left: 30px solid transparent;
-            border-right: 30px solid transparent;
-            border-bottom: 52px solid var(--cold-red);
-            background: none;
-        }
-        
-        @keyframes floatShape {
-            0%, 100% {
-                transform: translateY(0) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-20px) rotate(5deg);
-            }
-        }
-        
-        /* COLD RED PARTICLE EFFECT */
         .cold-red-particle {
             position: absolute;
-            background: var(--cold-red);
+            background: rgba(232, 67, 147, 0.3);
             border-radius: 50%;
-            animation: floatParticle 15s infinite linear;
-            opacity: 0.1;
+            animation: floatParticle 20s infinite linear;
         }
         
         @keyframes floatParticle {
             0% {
                 transform: translateY(0) rotate(0deg);
-                opacity: 0.1;
+                opacity: 0.4;
             }
             50% {
-                transform: translateY(-100px) rotate(180deg);
-                opacity: 0.05;
+                transform: translateY(-150px) rotate(180deg);
+                opacity: 0.1;
             }
             100% {
                 transform: translateY(0) rotate(360deg);
-                opacity: 0.1;
+                opacity: 0.4;
             }
         }
         
-        /* ===== MODERN HEADER INSPIRED BY IMAGE ===== */
+        /* Cold red spheres with gradient */
+        .cold-red-sphere {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            animation: rotateSphere 25s infinite linear;
+            transform-style: preserve-3d;
+            background: radial-gradient(circle at 30% 30%, rgba(232, 67, 147, 0.3), rgba(255, 71, 87, 0.1));
+            border-radius: 50%;
+            filter: blur(1px);
+        }
+        
+        @keyframes rotateSphere {
+            0% {
+                transform: rotateX(0) rotateY(0);
+            }
+            100% {
+                transform: rotateX(360deg) rotateY(360deg);
+            }
+        }
+        
+        /* Cold red lines with gradient */
+        .cold-red-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, var(--cold-red), transparent);
+            transform-origin: center;
+            animation: pulseLine 10s infinite ease-in-out;
+            filter: blur(1px);
+        }
+        
+        @keyframes pulseLine {
+            0%, 100% {
+                transform: scaleX(1);
+                opacity: 0.2;
+            }
+            50% {
+                transform: scaleX(1.5);
+                opacity: 0.4;
+            }
+        }
+        
+        /* Cold red grid */
+        .cold-red-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(to right, rgba(232, 67, 147, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(232, 67, 147, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.3;
+        }
+        
+        /* ===== LOGO INTRO SECTION ===== */
+        .logo-intro {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: var(--header-height);
+            background: rgba(15, 23, 42, 0.7);
+        }
+        
+        .logo-intro-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 40px;
+            border-radius: 24px;
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(20px);
+            box-shadow: 
+                var(--shadow-lg),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .logo-large {
+            height: 120px;
+            margin-bottom: 40px;
+            width: auto;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+            animation: logoFloat 6s infinite ease-in-out;
+        }
+        
+        @keyframes logoFloat {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-15px) scale(1.03);
+            }
+        }
+        
+        .logo-intro h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            color: var(--white);
+            background: linear-gradient(135deg, var(--white) 0%, var(--accent-red) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .logo-tagline {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: var(--cold-red);
+            font-family: 'Outfit', sans-serif;
+            letter-spacing: 1px;
+        }
+        
+        .logo-description {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 40px;
+            line-height: 1.8;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+        }
+        
+        .logo-subtitle {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.6);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 40px;
+            font-weight: 400;
+        }
+        
+        /* ===== 3D HEADER - WITH DEPTH ===== */
         header {
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(18, 18, 18, 0.9);
-            backdrop-filter: blur(10px);
-            padding: 20px 0;
-            border-bottom: 1px solid rgba(211, 47, 47, 0.2);
+            background: rgba(15, 23, 42, 0.9);
+            padding: 0;
             transition: var(--transition);
-            box-shadow: var(--shadow-dark);
+            height: var(--header-height);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(232, 67, 147, 0.2);
+        }
+        
+        /* 3D Effect for header */
+        .header-3d {
+            position: relative;
+            height: 100%;
+            background: linear-gradient(145deg, rgba(26, 54, 93, 0.9), rgba(20, 33, 61, 0.9));
+            transform-style: preserve-3d;
+            box-shadow: 
+                0 10px 20px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
         
         .header-scrolled {
-            padding: 15px 0;
-            background: rgba(10, 10, 10, 0.95);
+            height: 70px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
         }
         
         .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            height: 100%;
+            position: relative;
+            z-index: 2;
         }
         
-        .logo-section {
+        .logo {
             display: flex;
             align-items: center;
-            gap: 20px;
+            text-decoration: none;
         }
         
         .logo-img {
-            height: 50px;
+            height: 40px;
             width: auto;
             transition: var(--transition);
-            filter: brightness(1.2);
-        }
-        
-        .logo-text {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 700;
-            font-size: 1.8rem;
-            background: linear-gradient(135deg, var(--cold-red), var(--accent-teal));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            /* KEEP ORIGINAL LOGO COLOR */
+            filter: none !important;
         }
         
         .nav-links {
             display: flex;
-            gap: 30px;
+            gap: 32px;
             align-items: center;
         }
         
         .nav-links a {
-            color: var(--text-muted);
+            color: var(--white);
             text-decoration: none;
             font-family: 'Outfit', sans-serif;
             font-weight: 500;
             font-size: 1rem;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             transition: var(--transition);
             position: relative;
             padding: 8px 0;
             text-transform: uppercase;
-            font-size: 0.85rem;
-        }
-        
-        .nav-links a:hover {
-            color: var(--cold-red-light);
+            font-size: 0.9rem;
         }
         
         .nav-links a::after {
@@ -249,24 +367,39 @@
             transition: width 0.3s ease;
         }
         
+        .nav-links a:hover {
+            transform: translateY(-2px);
+            color: var(--cold-red);
+        }
+        
         .nav-links a:hover::after {
             width: 100%;
         }
         
-        .search-icon {
-            color: var(--text-muted);
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: var(--transition);
-            margin-left: 20px;
+        /* 3D Header elements */
+        .header-red-element {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(232, 67, 147, 0.5);
+            border-radius: 50%;
+            animation: floatHeader 8s infinite ease-in-out;
+            z-index: 1;
+            filter: blur(1px);
         }
         
-        .search-icon:hover {
-            color: var(--cold-red-light);
-            transform: scale(1.1);
+        @keyframes floatHeader {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+                opacity: 0.4;
+            }
+            50% {
+                transform: translateY(-10px) scale(1.2);
+                opacity: 0.8;
+            }
         }
         
-        /* MOBILE MENU */
+        /* MOBILE MENU STYLES */
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -286,7 +419,7 @@
             transform: translate(-50%, -50%);
             width: 24px;
             height: 2px;
-            background: var(--text-light);
+            background: var(--white);
             border-radius: 2px;
             transition: var(--transition);
         }
@@ -297,7 +430,7 @@
             position: absolute;
             width: 24px;
             height: 2px;
-            background: var(--text-light);
+            background: var(--white);
             border-radius: 2px;
             transition: var(--transition);
         }
@@ -322,161 +455,61 @@
             transform: rotate(-45deg);
         }
         
-        /* ===== HERO SECTION - LOGO & DESCRIPTION (INSPIRED BY IMAGE) ===== */
+        /* ===== HERO SECTION ===== */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
+            background: var(--bg-section);
             padding-top: var(--header-height);
             position: relative;
             overflow: hidden;
         }
         
-        /* Inspired background effect */
-        .hero-bg-effect {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(211, 47, 47, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(33, 150, 243, 0.05) 0%, transparent 50%),
-                linear-gradient(135deg, rgba(10, 10, 10, 0.9) 0%, rgba(18, 18, 18, 0.8) 100%);
-            filter: blur(1px);
-        }
-        
-        /* Grid pattern overlay */
-        .hero-grid {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(211, 47, 47, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(211, 47, 47, 0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            z-index: -1;
-            opacity: 0.3;
-        }
-        
         .hero-content {
+            position: relative;
+            z-index: 2;
             text-align: center;
             max-width: 900px;
             margin: 0 auto;
-            position: relative;
-            z-index: 2;
+            background: rgba(30, 41, 59, 0.7);
+            padding: 70px 50px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-light);
+            backdrop-filter: blur(15px);
         }
         
-        /* Logo container inspired by image */
-        .logo-container {
-            margin-bottom: 40px;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .main-logo {
-            height: 120px;
-            width: auto;
-            margin-bottom: 20px;
-            filter: brightness(1.2);
-            transition: var(--transition);
-        }
-        
-        .logo-container::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            border: 1px solid rgba(211, 47, 47, 0.3);
-            border-radius: 10px;
-            z-index: -1;
-            animation: pulseBorder 3s infinite ease-in-out;
-        }
-        
-        @keyframes pulseBorder {
-            0%, 100% {
-                opacity: 0.3;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 0.6;
-                transform: scale(1.02);
-            }
-        }
-        
-        /* Small description with small font */
-        .hero-description {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto 50px;
-            line-height: 1.8;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            position: relative;
-        }
-        
-        .hero-description::before,
-        .hero-description::after {
-            content: '';
-            position: absolute;
-            width: 40px;
-            height: 1px;
-            background: var(--cold-red);
-            top: 50%;
-            opacity: 0.5;
-        }
-        
-        .hero-description::before {
-            left: 0;
-            transform: translateX(-50px);
-        }
-        
-        .hero-description::after {
-            right: 0;
-            transform: translateX(50px);
-        }
-        
-        /* Main heading */
-        .hero-heading {
-            font-size: 3.5rem;
+        .hero h1 {
+            font-size: 3.8rem;
             font-weight: 800;
             margin-bottom: 30px;
             line-height: 1.1;
-            color: var(--text-light);
+            color: var(--white);
+        }
+        
+        .hero-highlight {
+            color: var(--cold-red);
             position: relative;
             display: inline-block;
+            /* REMOVED THE UNDERLINE */
         }
         
-        .hero-heading::before {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--cold-red), var(--accent-teal));
-            border-radius: 2px;
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 50px;
+            line-height: 1.8;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
-        .creative-highlight {
-            color: var(--cold-red-light);
-            position: relative;
-            display: inline-block;
-        }
-        
-        /* Action buttons */
-        .hero-actions {
+        .hero-buttons {
             display: flex;
             gap: 20px;
             justify-content: center;
-            margin-top: 50px;
+            margin-top: 40px;
         }
         
         .btn {
@@ -484,20 +517,19 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            padding: 15px 35px;
+            padding: 18px 36px;
             border-radius: 50px;
             text-decoration: none;
             font-family: 'Outfit', sans-serif;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 1.05rem;
             transition: var(--transition);
             border: none;
             cursor: pointer;
             position: relative;
             overflow: hidden;
             z-index: 1;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
         .btn::before {
@@ -507,7 +539,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
             transition: left 0.7s;
             z-index: -1;
         }
@@ -517,30 +549,38 @@
         }
         
         .btn-primary {
-            background: linear-gradient(135deg, var(--cold-red), var(--cold-red-dark));
-            color: var(--text-white);
-            box-shadow: 0 4px 20px rgba(211, 47, 47, 0.3);
+            background: linear-gradient(135deg, var(--cold-red), var(--accent-red));
+            color: var(--white);
+            box-shadow: var(--shadow-md);
         }
         
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(211, 47, 47, 0.4);
-            background: linear-gradient(135deg, var(--cold-red-light), var(--cold-red));
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: var(--shadow-lg);
         }
         
         .btn-secondary {
             background: transparent;
-            color: var(--text-light);
-            border: 2px solid rgba(211, 47, 47, 0.5);
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: var(--shadow-sm);
         }
         
         .btn-secondary:hover {
-            transform: translateY(-3px);
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            box-shadow: var(--shadow-md);
             border-color: var(--cold-red);
-            background: rgba(211, 47, 47, 0.1);
         }
         
-        /* ===== OTHER SECTIONS - KEEPING CONSISTENT DESIGN ===== */
+        /* ===== PARTNER SECTION ===== */
+        .partner-section {
+            background: var(--bg-section);
+            position: relative;
+            overflow: hidden;
+        }
+        
         .section-header {
             text-align: center;
             margin-bottom: 70px;
@@ -551,8 +591,8 @@
         .section-header h2 {
             font-size: 2.8rem;
             font-weight: 800;
-            margin-bottom: 15px;
-            color: var(--text-light);
+            margin-bottom: 20px;
+            color: var(--white);
             position: relative;
             display: inline-block;
         }
@@ -560,82 +600,550 @@
         .section-header h2::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -12px;
             left: 50%;
             transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
+            width: 70px;
+            height: 4px;
             background: var(--cold-red);
             border-radius: 2px;
         }
         
         .section-subtitle {
-            font-size: 1.1rem;
-            color: var(--text-muted);
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
             max-width: 600px;
             margin: 0 auto;
         }
         
-        /* ===== PARTNER SECTION ===== */
-        .partner-section {
-            background: var(--bg-card-dark);
+        .partner-card {
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: 20px;
+            padding: 80px 60px;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+            max-width: 1100px;
+            margin: 0 auto;
             position: relative;
             overflow: hidden;
-            border-radius: 20px;
-            margin: 50px 0;
-            box-shadow: var(--shadow-dark);
+            border: 1px solid rgba(232, 67, 147, 0.2);
+            transition: var(--transition);
+            z-index: 2;
+            backdrop-filter: blur(15px);
         }
         
-        .partner-card {
-            background: rgba(30, 30, 30, 0.8);
-            border-radius: 15px;
-            padding: 60px;
-            text-align: center;
-            border: 1px solid rgba(211, 47, 47, 0.2);
-            backdrop-filter: blur(10px);
+        .partner-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--cold-red);
+        }
+        
+        .partner-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--cold-red);
         }
         
         .partner-logo {
-            height: 120px;
-            margin-bottom: 40px;
+            height: 140px;
+            margin-bottom: 60px;
             width: auto;
-            filter: brightness(1.1);
+            max-width: 100%;
             transition: var(--transition);
+            filter: brightness(1.1);
         }
         
         .partner-logo:hover {
             transform: scale(1.05);
         }
         
-        /* ===== FOOTER ===== */
-        footer {
-            background: var(--bg-darker);
-            color: var(--text-light);
-            padding: 80px 0 40px;
+        .partner-title {
+            font-size: 1.5rem;
+            color: var(--white);
+            font-weight: 700;
+            margin-bottom: 30px;
+            font-family: 'Outfit', sans-serif;
+        }
+        
+        .partner-description {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.9;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .role-list {
+            list-style: none;
+            margin-top: 40px;
+            text-align: left;
+            max-width: 700px;
+            margin: 40px auto 0;
+        }
+        
+        .role-list li {
+            margin-bottom: 20px;
+            padding-left: 40px;
+            position: relative;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+            font-size: 1.15rem;
+        }
+        
+        .role-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--cold-red);
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        
+        /* ===== ABOUT SECTION ===== */
+        #about {
+            background: var(--bg-section);
+            position: relative;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+        
+        .about-text h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            color: var(--white);
+            line-height: 1.2;
+        }
+        
+        .about-text p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.9;
+            margin-bottom: 35px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+        
+        .feature-card {
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: 16px;
+            padding: 35px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border-top: 4px solid var(--cold-red);
+            border: 1px solid rgba(232, 67, 147, 0.2);
             position: relative;
             overflow: hidden;
-            border-top: 1px solid rgba(211, 47, 47, 0.2);
+            z-index: 2;
+            backdrop-filter: blur(15px);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--cold-red);
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 70px;
+            height: 70px;
+            background: rgba(232, 67, 147, 0.1);
+            border-radius: 0 0 0 100%;
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: var(--cold-red);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--white);
+            font-family: 'Outfit', sans-serif;
+        }
+        
+        .feature-card p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+        }
+        
+        /* ===== PHASES SECTION ===== */
+        .phases-section {
+            background: var(--bg-section);
+            position: relative;
+        }
+        
+        .phases-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+        }
+        
+        .phase-card {
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: 18px;
+            padding: 45px;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(232, 67, 147, 0.2);
+            z-index: 2;
+            backdrop-filter: blur(15px);
+        }
+        
+        .phase-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--cold-red);
+        }
+        
+        .phase-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--cold-red);
+        }
+        
+        .phase-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 55px;
+            height: 55px;
+            background: var(--cold-red);
+            color: var(--white);
+            border-radius: 50%;
+            font-weight: 800;
+            font-size: 1.4rem;
+            margin-bottom: 28px;
+            box-shadow: 0 4px 18px rgba(232, 67, 147, 0.3);
+        }
+        
+        .phase-icon {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            color: var(--cold-red);
+        }
+        
+        .phase-card h3 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--white);
+            font-family: 'Outfit', sans-serif;
+        }
+        
+        .phase-details {
+            list-style: none;
+            margin-top: 25px;
+        }
+        
+        .phase-details li {
+            margin-bottom: 14px;
+            padding-left: 32px;
+            position: relative;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+        
+        .phase-details li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--cold-red);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        /* ===== REGISTRATION SECTION ===== */
+        .registration-section {
+            background: var(--bg-section);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 28px;
+            margin: 70px 0;
+        }
+        
+        .benefit-card {
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: 16px;
+            padding: 38px;
+            border: 1px solid rgba(232, 67, 147, 0.2);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            z-index: 2;
+            backdrop-filter: blur(15px);
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--cold-red);
+        }
+        
+        .benefit-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 70px 70px 0;
+            border-color: transparent rgba(232, 67, 147, 0.1) transparent transparent;
+        }
+        
+        .benefit-icon {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            color: var(--cold-red);
+        }
+        
+        .benefit-card h4 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--white);
+            font-family: 'Outfit', sans-serif;
+        }
+        
+        .benefit-card p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+        
+        .eligibility-box {
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: 18px;
+            padding: 50px;
+            border: 1px solid rgba(232, 67, 147, 0.2);
+            margin: 70px 0;
+            transition: var(--transition);
+            box-shadow: var(--shadow-md);
+            z-index: 2;
+            backdrop-filter: blur(15px);
+        }
+        
+        .eligibility-box:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--cold-red);
+        }
+        
+        .eligibility-box h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: var(--white);
+            font-family: 'Outfit', sans-serif;
+        }
+        
+        .eligibility-list {
+            list-style: none;
+        }
+        
+        .eligibility-list li {
+            margin-bottom: 18px;
+            padding-left: 36px;
+            position: relative;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+        }
+        
+        .eligibility-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--cold-red);
+            font-size: 1.8rem;
+            line-height: 1;
+        }
+        
+        .final-cta {
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: 22px;
+            padding: 70px;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            margin-top: 70px;
+            border: 1px solid rgba(232, 67, 147, 0.2);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 2;
+            backdrop-filter: blur(15px);
+        }
+        
+        .final-cta:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--cold-red);
+        }
+        
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--cold-red);
+        }
+        
+        .final-cta h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            color: var(--white);
+            line-height: 1.2;
+        }
+        
+        .final-cta p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 45px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.9;
+        }
+        
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--dark-blue);
+            color: var(--white);
+            padding: 90px 0 50px;
+            position: relative;
+            overflow: hidden;
         }
         
         .footer-content {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            gap: 60px;
-            margin-bottom: 60px;
+            gap: 70px;
+            margin-bottom: 70px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .footer-brand {
+            max-width: 450px;
         }
         
         .footer-logo {
-            height: 40px;
-            margin-bottom: 20px;
-            filter: brightness(1.2);
+            height: 45px;
+            margin-bottom: 30px;
+            width: auto;
+            /* KEEP ORIGINAL LOGO COLOR */
+            filter: none !important;
+        }
+        
+        .footer-tagline {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.9;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+        
+        .footer-heading {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: var(--white);
+            font-family: 'Outfit', sans-serif;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 18px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+        
+        .footer-links a:hover {
+            color: var(--cold-red);
+            padding-left: 10px;
+            font-weight: 600;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 18px;
+            margin-top: 30px;
+        }
+        
+        .social-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+        
+        .social-icon:hover {
+            background: var(--cold-red);
+            transform: translateY(-4px) scale(1.1);
         }
         
         .copyright {
             text-align: center;
-            padding-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--text-muted);
-            font-size: 0.9rem;
+            padding-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 2;
         }
         
         /* ===== RESPONSIVE DESIGN ===== */
@@ -644,13 +1152,30 @@
                 gap: 25px;
             }
             
-            .hero-heading {
-                font-size: 3rem;
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 60px;
             }
             
             .footer-content {
                 grid-template-columns: 1fr 1fr;
-                gap: 50px;
+                gap: 60px;
+            }
+            
+            .partner-logo {
+                height: 120px;
+            }
+            
+            .logo-large {
+                height: 100px;
+            }
+            
+            .logo-intro h1 {
+                font-size: 3rem;
             }
         }
         
@@ -663,21 +1188,30 @@
                 display: block;
             }
             
-            .hero {
-                padding-top: 80px;
+            .logo-intro {
+                padding-top: 70px;
                 min-height: 90vh;
             }
             
-            .hero-heading {
-                font-size: 2.5rem;
+            .hero {
+                padding-top: 70px;
+                min-height: 90vh;
             }
             
-            .hero-actions {
+            .hero h1 {
+                font-size: 2.6rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.15rem;
+            }
+            
+            .hero-buttons {
                 flex-direction: column;
-                gap: 15px;
+                gap: 18px;
             }
             
-            .hero-actions .btn {
+            .hero-buttons .btn {
                 width: 100%;
                 max-width: 300px;
             }
@@ -686,22 +1220,56 @@
                 font-size: 2.3rem;
             }
             
-            .partner-card {
-                padding: 40px 30px;
+            .partner-logo {
+                height: 100px;
+                margin-bottom: 50px;
+            }
+            
+            .partner-card,
+            .feature-card,
+            .phase-card,
+            .benefit-card,
+            .eligibility-box,
+            .final-cta {
+                padding: 50px 30px;
             }
             
             .footer-content {
                 grid-template-columns: 1fr;
-                gap: 40px;
+                gap: 50px;
             }
             
-            /* Adjust background elements for mobile */
-            .geometric-shape {
-                opacity: 0.15;
+            .final-cta {
+                padding: 50px 30px;
             }
             
-            .cold-red-particle {
-                opacity: 0.05;
+            .final-cta h2 {
+                font-size: 2.3rem;
+            }
+            
+            .logo-large {
+                height: 80px;
+            }
+            
+            .logo-intro h1 {
+                font-size: 2.5rem;
+            }
+            
+            .logo-tagline {
+                font-size: 1.5rem;
+            }
+            
+            .logo-description {
+                font-size: 1.1rem;
+            }
+            
+            /* Reduce background elements on mobile */
+            .cold-red-element {
+                opacity: 0.1;
+            }
+            
+            .cold-red-sphere, .cold-red-cube {
+                display: none;
             }
         }
         
@@ -714,25 +1282,54 @@
                 padding: 70px 0;
             }
             
-            .hero-heading {
+            .hero h1 {
                 font-size: 2.2rem;
             }
             
-            .hero-description {
-                font-size: 0.8rem;
+            .hero-subtitle {
+                font-size: 1.05rem;
             }
             
             .btn {
-                padding: 14px 30px;
-                font-size: 0.9rem;
+                padding: 16px 30px;
+                font-size: 1rem;
             }
             
             .section-header h2 {
                 font-size: 2rem;
             }
             
-            .main-logo {
-                height: 100px;
+            .about-text h2 {
+                font-size: 2rem;
+            }
+            
+            .phases-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .partner-logo {
+                height: 80px;
+                margin-bottom: 40px;
+            }
+            
+            .hero-content {
+                padding: 50px 30px;
+            }
+            
+            .logo-intro-content {
+                padding: 40px 25px;
+            }
+            
+            .logo-intro h1 {
+                font-size: 2rem;
+            }
+            
+            .logo-tagline {
+                font-size: 1.3rem;
             }
         }
         
@@ -755,7 +1352,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(10, 10, 10, 0.95);
+            background: rgba(15, 23, 42, 0.95);
             backdrop-filter: blur(15px);
             z-index: 999;
             opacity: 0;
@@ -775,14 +1372,14 @@
             width: 85%;
             max-width: 320px;
             height: 100%;
-            background: rgba(30, 30, 30, 0.95);
+            background: rgba(30, 41, 59, 0.95);
             backdrop-filter: blur(20px);
             z-index: 1000;
-            padding: 100px 25px 40px;
+            padding: 90px 25px 35px;
             display: flex;
             flex-direction: column;
             transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border-left: 1px solid rgba(211, 47, 47, 0.3);
+            border-left: 1px solid rgba(232, 67, 147, 0.25);
         }
         
         .mobile-menu-content.active {
@@ -792,105 +1389,161 @@
         .mobile-menu-links {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 22px;
         }
         
         .mobile-menu-links a {
-            color: var(--text-light);
+            color: var(--white);
             text-decoration: none;
             font-family: 'Outfit', sans-serif;
             font-size: 1.2rem;
             font-weight: 600;
             padding: 12px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             transition: var(--transition);
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
         
         .mobile-menu-links a:hover {
-            color: var(--cold-red-light);
+            color: var(--cold-red);
             padding-left: 15px;
+            transform: translateX(5px);
+        }
+        
+        .mobile-cta {
+            margin-top: 45px;
+            width: 100%;
+        }
+        
+        .mobile-menu-close {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: var(--white);
+            font-size: 1.3rem;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 50%;
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .mobile-menu-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
         }
     </style>
 </head>
 <body>
-    <!-- INSPIRED BACKGROUND ELEMENTS -->
-    <div class="creative-bg"></div>
-    <div class="geometric-overlay" id="geometricOverlay"></div>
-    
-    <!-- MODERN HEADER -->
+    <!-- COMPLEX BACKGROUND PATTERN -->
+    <div class="complex-background" id="complexBackground">
+        <div class="geometric-pattern"></div>
+        <div class="cold-red-grid"></div>
+        <!-- Cold red elements will be added via JavaScript -->
+    </div>
+
+    <!-- 3D HEADER -->
     <header id="header">
-        <div class="container nav-container">
-            <div class="logo-section">
-                <a href="#hero" class="logo">
+        <div class="header-3d">
+            <!-- 3D Red elements in header -->
+            <div class="header-red-element" style="top: 20%; left: 5%; animation-delay: 0s;"></div>
+            <div class="header-red-element" style="top: 60%; right: 10%; animation-delay: -2s; width: 15px; height: 15px;"></div>
+            <div class="header-red-element" style="top: 40%; right: 20%; animation-delay: -4s; width: 25px; height: 25px;"></div>
+            
+            <div class="container nav-container">
+                <a href="#logo-intro" class="logo">
                     <img src="Picture1.png" alt="BrainLink Logo" class="logo-img">
                 </a>
-                <div class="logo-text">BrainLink</div>
-            </div>
-            
-            <nav>
-                <div class="nav-links">
-                    <a href="#hero">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#coding">Coding</a>
-                    <a href="#contact">Contact</a>
-                    <div class="search-icon">
-                        <i class="fas fa-search"></i>
-                    </div>
-                </div>
                 
-                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
-                    <span class="menu-icon"></span>
-                </button>
-            </nav>
+                <nav>
+                    <div class="nav-links">
+                        <a href="#logo-intro">Home</a>
+                        <a href="#hero">About</a>
+                        <a href="#phases">Phases</a>
+                        <a href="#partners">Partners</a>
+                        <a href="#register">Register</a>
+                    </div>
+                    
+                    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                        <span class="menu-icon"></span>
+                    </button>
+                </nav>
+            </div>
         </div>
     </header>
 
-    <!-- MOBILE MENU -->
+    <!-- MOBILE MENU OVERLAY -->
     <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+    
+    <!-- MOBILE MENU CONTENT -->
     <div class="mobile-menu-content" id="mobileMenuContent">
         <button class="mobile-menu-close" id="mobileMenuClose">
             <i class="fas fa-times"></i>
         </button>
         
         <div class="mobile-menu-links">
-            <a href="#hero">Home</a>
-            <a href="#about">About BrainLink</a>
-            <a href="#coding">Competition Phases</a>
+            <a href="#logo-intro">Home</a>
+            <a href="#hero">About BrainLink</a>
+            <a href="#phases">Competition Phases</a>
             <a href="#partners">Partners</a>
-            <a href="#contact">Contact</a>
+            <a href="#register">Registration</a>
         </div>
+        
+        <a href="https://forms.google.com/your-registration-link" class="btn btn-primary mobile-cta" target="_blank">
+            <i class="fas fa-user-plus"></i>
+            Register Now
+        </a>
     </div>
 
-    <!-- HERO SECTION - LOGO & DESCRIPTION -->
-    <section id="hero" class="hero">
-        <div class="hero-bg-effect"></div>
-        <div class="hero-grid"></div>
-        
+    <!-- LOGO INTRO SECTION -->
+    <section id="logo-intro" class="logo-intro">
+        <!-- Cold red elements added via JavaScript -->
         <div class="container">
-            <div class="hero-content fade-in">
-                <div class="logo-container">
-                    <img src="Picture1.png" alt="BrainLink Logo" class="main-logo">
-                </div>
-                
-                <p class="hero-description">
-                    Algeria's Premier Innovation Competition • Bridging Business & Engineering Minds
+            <div class="logo-intro-content fade-in">
+                <img src="Picture1.png" alt="BrainLink Logo" class="logo-large">
+                <h1>BRAINLINK</h1>
+                <div class="logo-tagline">Innovation Competition 2024</div>
+                <p class="logo-description">
+                    Where brilliant minds connect to solve real-world challenges. BrainLink brings together Algeria's most promising business and engineering talent to create impactful solutions with industry leaders.
                 </p>
+                <div class="logo-subtitle">Organized by The Elite Club</div>
                 
-                <h1 class="hero-heading">
-                    Where <span class="creative-highlight">Creative</span> Solutions Meet Real Challenges
-                </h1>
-                
-                <div class="hero-actions">
+                <div class="hero-buttons" style="margin-top: 50px;">
                     <a href="#register" class="btn btn-primary">
-                        <i class="fas fa-rocket"></i>
-                        Start Innovation
+                        Join the Competition
+                        <i class="fas fa-arrow-right"></i>
                     </a>
                     <a href="#about" class="btn btn-secondary">
-                        <i class="fas fa-play-circle"></i>
-                        Learn More
+                        Discover More
+                        <i class="fas fa-compass"></i>
                     </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero">
+        <!-- Cold red elements added via JavaScript -->
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1>Where <span class="hero-highlight">Innovation</span> Meets Opportunity</h1>
+                <p class="hero-subtitle">
+                    The ultimate innovation challenge bringing together Algeria's brightest business and engineering minds to solve real-world problems with Henkel Algeria.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#register" class="btn btn-primary">
+                        Register Now
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#about" class="btn btn-secondary">Learn More</a>
                 </div>
             </div>
         </div>
@@ -898,91 +1551,232 @@
 
     <!-- PARTNER SECTION -->
     <section id="partners" class="partner-section">
+        <!-- Cold red elements added via JavaScript -->
         <div class="container">
             <div class="section-header fade-in">
-                <h2>Strategic Partnership</h2>
-                <p class="section-subtitle">Collaborating with industry leaders to drive innovation</p>
+                <h2>In Partnership With</h2>
+                <p class="section-subtitle">Collaborating for innovation and excellence</p>
             </div>
             
             <div class="partner-card fade-in">
                 <img src="1200px-Henkel-Logo.svg.png" alt="Henkel Algeria" class="partner-logo">
-                <p class="hero-description" style="font-size: 1rem; margin-bottom: 30px;">
-                    INNOVATION • SUSTAINABILITY • EXPERTISE
+                <p class="partner-description">
+                    Henkel Algeria, a leader in innovation and sustainability, partners with BrainLink to provide real-world challenges and industry expertise.
                 </p>
-                <p style="color: var(--text-muted); line-height: 1.8; font-size: 1.1rem; max-width: 800px; margin: 0 auto;">
-                    Henkel Algeria brings real-world industry challenges and professional mentorship to the BrainLink competition, 
-                    providing students with unparalleled opportunities to develop practical solutions and gain industry exposure.
-                </p>
+                
+                <div class="partner-title">Henkel's Role in the Competition</div>
+                <ul class="role-list">
+                    <li>Provides real business challenges for participants to solve</li>
+                    <li>Offers industry expertise and mentorship throughout the competition</li>
+                    <li>Provides access to professional resources and networking opportunities</li>
+                    <li>Evaluates final solutions with industry standards</li>
+                    <li>Offers internship and career opportunities to top performers</li>
+                    <li>Contributes to prizes and recognition for winning teams</li>
+                </ul>
             </div>
         </div>
     </section>
 
     <!-- ABOUT SECTION -->
     <section id="about">
+        <!-- Cold red elements added via JavaScript -->
         <div class="container">
-            <div class="section-header fade-in">
-                <h2>About BrainLink</h2>
-                <p class="section-subtitle">Redefining innovation through cross-disciplinary collaboration</p>
-            </div>
-            
-            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-                <p style="color: var(--text-muted); line-height: 1.9; font-size: 1.2rem; margin-bottom: 40px;">
-                    BrainLink is not just a competition—it's an ecosystem where business strategy meets engineering execution. 
-                    We create the perfect intersection for Algeria's brightest minds to co-create solutions that matter.
-                </p>
-                
-                <div class="hero-actions">
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <h2>What is BrainLink?</h2>
+                    <p>
+                        BrainLink is not just a competition—it's a launchpad for innovation. We unite ambitious business strategists and technical engineering minds to co-create solutions that matter. This intersection of disciplines creates groundbreaking solutions to real-world challenges.
+                    </p>
                     <a href="#phases" class="btn btn-primary">
-                        <i class="fas fa-code"></i>
                         View Competition Phases
+                        <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
+                
+                <div class="features-grid fade-in" style="transition-delay: 0.2s">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Cross-Disciplinary Collaboration</h3>
+                        <p>Business meets engineering. Strategy meets execution. Your diverse team is your superpower in solving complex challenges.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h3>Real-World Impact</h3>
+                        <p>Solve actual business challenges from Henkel. Your solution could shape the future of industry in Algeria.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3>Career Acceleration</h3>
+                        <p>Stand out to recruiters, build your portfolio, and unlock opportunities with industry leaders and partners.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PHASES SECTION -->
+    <section id="phases" class="phases-section">
+        <!-- Cold red elements added via JavaScript -->
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Competition Phases</h2>
+                <p class="section-subtitle">Your journey to victory</p>
+            </div>
+            
+            <div class="phases-container">
+                <div class="phase-card fade-in">
+                    <div class="phase-number">01</div>
+                    <div class="phase-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3>Semi-Finals</h3>
+                    <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 16px;">Digital Arena</p>
+                    <ul class="phase-details">
+                        <li>Fully online competition platform</li>
+                        <li>Submit innovative solution proposals</li>
+                        <li>Virtual presentations to industry judges</li>
+                        <li>Top teams selected for the grand finale</li>
+                    </ul>
+                </div>
+                
+                <div class="phase-card fade-in" style="transition-delay: 0.2s">
+                    <div class="phase-number">02</div>
+                    <div class="phase-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>Grand Finale</h3>
+                    <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 16px;">The Ultimate Showdown</p>
+                    <ul class="phase-details">
+                        <li>Presentation at Henkel headquarters</li>
+                        <li>Face-to-face mentoring sessions</li>
+                        <li>Live pitch presentations to executive panel</li>
+                        <li>Winner announcement and awards ceremony</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REGISTRATION SECTION -->
+    <section id="register" class="registration-section">
+        <!-- Cold red elements added via JavaScript -->
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Ready to Make Your Mark?</h2>
+                <p class="section-subtitle">Join Algeria's premier student innovation challenge</p>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h4>Compete for Prizes</h4>
+                    <p>Win prestigious awards, cash prizes, and industry recognition.</p>
+                </div>
+                
+                <div class="benefit-card fade-in" style="transition-delay: 0.1s">
+                    <div class="benefit-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h4>Network with Leaders</h4>
+                    <p>Connect with industry experts, mentors, and fellow innovators.</p>
+                </div>
+                
+                <div class="benefit-card fade-in" style="transition-delay: 0.2s">
+                    <div class="benefit-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h4>Real Experience</h4>
+                    <p>Gain hands-on problem-solving experience with real industry challenges.</p>
+                </div>
+                
+                <div class="benefit-card fade-in" style="transition-delay: 0.3s">
+                    <div class="benefit-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h4>Career Opportunities</h4>
+                    <p>Access internships, recruitment opportunities, and professional development.</p>
+                </div>
+            </div>
+            
+            <div class="eligibility-box fade-in" style="transition-delay: 0.4s">
+                <h3>Eligibility Requirements</h3>
+                <ul class="eligibility-list">
+                    <li>Business and Engineering students from Algerian universities</li>
+                    <li>Team-based participation (3-5 members recommended)</li>
+                    <li>Currently enrolled in undergraduate or graduate programs</li>
+                    <li>Passion for innovation, problem-solving, and making an impact</li>
+                </ul>
+            </div>
+            
+            <div class="final-cta fade-in" style="transition-delay: 0.5s">
+                <h2>Your Innovation Journey Starts Here</h2>
+                <p>Don't miss this opportunity to showcase your skills, solve real problems, and make a lasting impact on Algeria's innovation landscape.</p>
+                <a href="https://forms.google.com/your-registration-link" class="btn btn-primary" target="_blank">
+                    Register Your Team Now
+                    <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
     <footer>
+        <!-- Cold red elements added via JavaScript -->
         <div class="container">
             <div class="footer-content">
-                <div>
+                <div class="footer-brand">
                     <img src="Picture1.png" alt="BrainLink" class="footer-logo">
-                    <p style="color: var(--text-muted); line-height: 1.8; margin-top: 20px;">
-                        Innovate. Collaborate. Transform. Organized by The Elite Club to empower Algeria's next generation of innovators.
+                    <p class="footer-tagline">
+                        Innovate. Collaborate. Transform. Organized by The Elite Club to empower the next generation of innovators in Algeria.
                     </p>
-                </div>
-                
-                <div>
-                    <h4 style="color: var(--text-light); margin-bottom: 20px; font-family: 'Outfit', sans-serif;">Quick Links</h4>
-                    <div class="mobile-menu-links" style="border: none; gap: 15px;">
-                        <a href="#hero">Home</a>
-                        <a href="#about">About BrainLink</a>
-                        <a href="#coding">Competition Phases</a>
-                        <a href="#partners">Partners</a>
-                        <a href="#contact">Contact</a>
-                    </div>
-                </div>
-                
-                <div>
-                    <h4 style="color: var(--text-light); margin-bottom: 20px; font-family: 'Outfit', sans-serif;">Connect</h4>
-                    <p style="color: var(--text-muted); margin-bottom: 20px;">info@brainlink.dz</p>
-                    <div style="display: flex; gap: 15px;">
-                        <a href="#" class="search-icon" style="margin: 0;">
+                    <div class="social-icons">
+                        <a href="#" class="social-icon" aria-label="Instagram">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="#" class="search-icon" style="margin: 0;">
+                        <a href="#" class="social-icon" aria-label="LinkedIn">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="#" class="search-icon" style="margin: 0;">
+                        <a href="#" class="social-icon" aria-label="TikTok">
                             <i class="fab fa-tiktok"></i>
                         </a>
                     </div>
+                </div>
+                
+                <div>
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#logo-intro">Home</a></li>
+                        <li><a href="#hero">About BrainLink</a></li>
+                        <li><a href="#phases">Competition Phases</a></li>
+                        <li><a href="#partners">Partners</a></li>
+                        <li><a href="#register">Registration</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="footer-heading">Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:info@brainlink.dz">info@brainlink.dz</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#terms">Terms & Conditions</a></li>
+                    </ul>
                 </div>
             </div>
             
             <div class="copyright">
                 <p>© 2024 BrainLink Innovation Competition. Organized by The Elite Club. All rights reserved.</p>
-                <p style="margin-top: 10px;">Empowering innovation to shape Algeria's future.</p>
+                <p>Empowering the next generation of innovators to shape a brighter future for Algeria.</p>
             </div>
         </div>
     </footer>
@@ -1023,6 +1817,15 @@
         mobileMenuOverlay.addEventListener('click', closeMobileMenu);
         mobileMenuClose.addEventListener('click', closeMobileMenu);
 
+        // Close mobile menu when clicking on links
+        document.querySelectorAll('.mobile-menu-links a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (this.getAttribute('href').startsWith('#')) {
+                    closeMobileMenu();
+                }
+            });
+        });
+
         // Scroll animations
         function checkScroll() {
             const elements = document.querySelectorAll('.fade-in');
@@ -1040,75 +1843,150 @@
         window.addEventListener('scroll', checkScroll);
         window.addEventListener('load', checkScroll);
 
-        // Create geometric background elements
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href') === '#') return;
+                
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Update registration links
         document.addEventListener('DOMContentLoaded', function() {
-            createGeometricElements();
-            createColdRedParticles();
+            const registrationLinks = document.querySelectorAll('a[href*="forms.google.com"]');
+            const actualFormLink = 'https://forms.google.com/your-actual-form-link-here';
+            
+            registrationLinks.forEach(link => {
+                link.href = actualFormLink;
+            });
             
             // Update current year in footer
             const currentYear = new Date().getFullYear();
             document.querySelector('.copyright p').innerHTML = 
                 document.querySelector('.copyright p').innerHTML.replace('2024', currentYear);
+            
+            // Create cold red elements in all sections
+            createColdRedElements();
+            
+            // Create floating particles
+            createFloatingParticles();
         });
 
-        function createGeometricElements() {
-            const container = document.getElementById('geometricOverlay');
+        // Create cold red elements for all sections
+        function createColdRedElements() {
+            const sections = document.querySelectorAll('section');
+            const background = document.getElementById('complexBackground');
             
-            // Create geometric shapes
-            for (let i = 0; i < 15; i++) {
-                const shape = document.createElement('div');
-                shape.className = 'geometric-shape';
+            sections.forEach((section, sectionIndex) => {
+                // Create 3-5 cold red elements per section
+                const elementCount = 3 + Math.floor(Math.random() * 3);
                 
-                // Random shape type
-                const shapeType = Math.floor(Math.random() * 3);
-                const size = 50 + Math.random() * 100;
-                
-                switch(shapeType) {
-                    case 0: // Circle
-                        shape.classList.add('shape-circle');
-                        shape.style.width = `${size}px`;
-                        shape.style.height = `${size}px`;
-                        break;
-                    case 1: // Square
-                        shape.classList.add('shape-square');
-                        shape.style.width = `${size}px`;
-                        shape.style.height = `${size}px`;
-                        break;
-                    case 2: // Triangle
-                        shape.classList.add('shape-triangle');
-                        shape.style.borderLeftWidth = `${size/2}px`;
-                        shape.style.borderRightWidth = `${size/2}px`;
-                        shape.style.borderBottomWidth = `${size * 0.866}px`;
-                        break;
+                for (let i = 0; i < elementCount; i++) {
+                    let element;
+                    const elementType = Math.floor(Math.random() * 3);
+                    
+                    switch(elementType) {
+                        case 0: // Sphere
+                            element = document.createElement('div');
+                            element.className = 'cold-red-element cold-red-sphere';
+                            const size = 60 + Math.random() * 80;
+                            element.style.width = `${size}px`;
+                            element.style.height = `${size}px`;
+                            element.style.opacity = 0.1 + Math.random() * 0.1;
+                            element.style.filter = `blur(${Math.random() * 2 + 1}px)`;
+                            break;
+                            
+                        case 1: // Line
+                            element = document.createElement('div');
+                            element.className = 'cold-red-element cold-red-line';
+                            const lineWidth = 100 + Math.random() * 200;
+                            const lineHeight = 2 + Math.random() * 3;
+                            element.style.width = `${lineWidth}px`;
+                            element.style.height = `${lineHeight}px`;
+                            element.style.opacity = 0.1 + Math.random() * 0.1;
+                            element.style.filter = `blur(${Math.random() * 1 + 0.5}px)`;
+                            break;
+                            
+                        default: // Particle
+                            element = document.createElement('div');
+                            element.className = 'cold-red-element cold-red-particle';
+                            const particleSize = 3 + Math.random() * 5;
+                            element.style.width = `${particleSize}px`;
+                            element.style.height = `${particleSize}px`;
+                            element.style.opacity = 0.1 + Math.random() * 0.2;
+                            element.style.filter = `blur(${Math.random() * 1 + 0.5}px)`;
+                            break;
+                    }
+                    
+                    // Random position within section
+                    const left = Math.random() * 90 + 5;
+                    const top = Math.random() * 90 + 5;
+                    element.style.left = `${left}%`;
+                    element.style.top = `${top}%`;
+                    
+                    // Random animation delays
+                    const delay = Math.random() * -20;
+                    element.style.animationDelay = `${delay}s`;
+                    
+                    // Random animation duration
+                    const duration = Math.random() * 10 + 15;
+                    element.style.animationDuration = `${duration}s`;
+                    
+                    section.appendChild(element);
                 }
+            });
+            
+            // Add some elements to the background as well
+            for (let i = 0; i < 10; i++) {
+                const element = document.createElement('div');
+                element.className = 'cold-red-element cold-red-particle';
                 
-                // Random position
+                const size = 2 + Math.random() * 4;
+                element.style.width = `${size}px`;
+                element.style.height = `${size}px`;
+                
                 const left = Math.random() * 100;
                 const top = Math.random() * 100;
-                shape.style.left = `${left}%`;
-                shape.style.top = `${top}%`;
+                element.style.left = `${left}%`;
+                element.style.top = `${top}%`;
                 
-                // Random opacity
-                const opacity = 0.1 + Math.random() * 0.2;
-                shape.style.opacity = opacity;
+                const opacity = Math.random() * 0.1 + 0.05;
+                element.style.opacity = opacity;
                 
-                // Random animation delay
                 const delay = Math.random() * -20;
-                shape.style.animationDelay = `${delay}s`;
+                element.style.animationDelay = `${delay}s`;
                 
-                container.appendChild(shape);
+                const duration = Math.random() * 10 + 20;
+                element.style.animationDuration = `${duration}s`;
+                
+                element.style.filter = `blur(${Math.random() * 1 + 0.5}px)`;
+                
+                background.appendChild(element);
             }
         }
 
-        function createColdRedParticles() {
-            const container = document.getElementById('geometricOverlay');
+        // Create floating particles
+        function createFloatingParticles() {
+            const container = document.getElementById('complexBackground');
+            const particleCount = 30;
             
-            for (let i = 0; i < 40; i++) {
+            for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'cold-red-particle';
                 
                 // Random size
-                const size = 2 + Math.random() * 5;
+                const size = Math.random() * 6 + 2;
                 particle.style.width = `${size}px`;
                 particle.style.height = `${size}px`;
                 
@@ -1118,21 +1996,40 @@
                 particle.style.left = `${left}%`;
                 particle.style.top = `${top}%`;
                 
+                // Random opacity
+                const opacity = Math.random() * 0.15 + 0.05;
+                particle.style.opacity = opacity;
+                
                 // Random animation delay
                 const delay = Math.random() * -20;
                 particle.style.animationDelay = `${delay}s`;
                 
                 // Random animation duration
-                const duration = 10 + Math.random() * 20;
+                const duration = Math.random() * 15 + 20;
                 particle.style.animationDuration = `${duration}s`;
+                
+                // Random blur
+                particle.style.filter = `blur(${Math.random() * 1 + 0.5}px)`;
                 
                 container.appendChild(particle);
             }
         }
 
-        // Search functionality
-        document.querySelector('.search-icon').addEventListener('click', function() {
-            alert('Search functionality coming soon!');
+        // Prevent scroll on mobile when menu is open
+        document.addEventListener('touchmove', function(e) {
+            if (document.body.style.overflow === 'hidden') {
+                e.preventDefault();
+            }
+        }, { passive: false });
+        
+        // Logo intro animation on load
+        window.addEventListener('load', function() {
+            const logoIntro = document.querySelector('.logo-intro-content');
+            if (logoIntro) {
+                setTimeout(() => {
+                    logoIntro.classList.add('visible');
+                }, 300);
+            }
         });
     </script>
 </body>
