@@ -239,69 +239,80 @@
             width: 100%;
         }
         
-        /* Mobile Menu Button */
-        .mobile-menu-btn {
-            display: none;
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
-            width: 44px;
-            height: 44px;
-            position: relative;
-            cursor: pointer;
-            z-index: 1001;
-            padding: 0;
-            border-radius: 6px;
-            transition: var(--transition);
-        }
+/* Mobile Menu Button - Clean Version */
+.mobile-menu-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    width: 44px;
+    height: 44px;
+    position: relative;
+    cursor: pointer;
+    z-index: 1001;
+    padding: 0;
+    border-radius: 0;
+}
+
+.mobile-menu-btn:hover {
+    background: transparent;
+}
+
+.menu-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 24px;
+    height: 12px;
+    background: transparent;
+    border-radius: 0;
+    transition: var(--transition);
+}
+
+.menu-icon::before,
+.menu-icon::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 2px;
+    background: var(--white);
+    border-radius: 2px;
+    transition: var(--transition);
+    left: 0;
+}
+
+.menu-icon::before {
+    top: 0;
+    transform: translateY(0);
+}
+
+.menu-icon::after {
+    bottom: 0;
+    transform: translateY(0);
+}
+
+/* Middle line - using main element */
+.menu-icon {
+    background: var(--white);
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Active state - transform into X */
+.mobile-menu-btn.active .menu-icon {
+    background: transparent;
+}
+
+.mobile-menu-btn.active .menu-icon::before {
+    top: 50%;
+    transform: rotate(45deg) translateY(-50%);
+}
+
+.mobile-menu-btn.active .menu-icon::after {
+    bottom: 50%;
+    transform: rotate(-45deg) translateY(50%);
+}
         
-        .mobile-menu-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-        
-        .menu-icon {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 24px;
-            height: 2px;
-            background: var(--white);
-            border-radius: 2px;
-            transition: var(--transition);
-        }
-        
-        .menu-icon::before,
-        .menu-icon::after {
-            content: '';
-            position: absolute;
-            width: 24px;
-            height: 2px;
-            background: var(--white);
-            border-radius: 2px;
-            transition: var(--transition);
-        }
-        
-        .menu-icon::before {
-            transform: translateY(-7px);
-        }
-        
-        .menu-icon::after {
-            transform: translateY(7px);
-        }
-        
-        .mobile-menu-btn.active .menu-icon {
-            background: transparent;
-        }
-        
-        .mobile-menu-btn.active .menu-icon::before {
-            transform: rotate(45deg);
-        }
-        
-        .mobile-menu-btn.active .menu-icon::after {
-            transform: rotate(-45deg);
-        }
-        
-    
         
         /* ===== MOBILE MENU OVERLAY ===== */
         .mobile-menu-overlay {
