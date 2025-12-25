@@ -263,18 +263,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 24px;
-            height: 2px;
-            background: var(--white);
-            border-radius: 2px;
-            transition: var(--transition);
-        }
-        
-        .menu-icon::before,
-        .menu-icon::after {
-            content: '';
-            position: absolute;
-            width: 24px;
+            width: 14px;
             height: 2px;
             background: var(--white);
             border-radius: 2px;
@@ -282,12 +271,19 @@
         }
         
         .menu-icon::before {
-            transform: translateY(-7px);
+            content: '';
+            position: absolute;
+            width: 14px;
+            height: 2px;
+            background: var(--white);
+            border-radius: 2px;
+            transition: var(--transition);
         }
         
-        .menu-icon::after {
-            transform: translateY(-7px);
+        .menu-icon::before {
+            transform: translateY(7px);
         }
+        
         
         .mobile-menu-btn.active .menu-icon {
             background: transparent;
@@ -297,9 +293,7 @@
             transform: rotate(-35deg);
         }
         
-        .mobile-menu-btn.active .menu-icon::after {
-            transform: rotate(-35deg);
-        }
+    
         
         /* ===== MOBILE MENU OVERLAY ===== */
         .mobile-menu-overlay {
