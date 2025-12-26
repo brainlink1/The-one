@@ -384,71 +384,46 @@
             transform: rotate(90deg);
         }
         
-        /* ===== HERO SECTION ===== */
-        .hero {
-            min-height: 200vh;
-            display: flex;
-            align-items: center;
-            background: transparent;
-            padding-top: calc(var(--header-height) + 10px);
+        /* ===== HERO IMAGE SECTION ===== */
+        .hero-image-section {
+            margin-top: var(--header-height);
+            width: 100%;
+            height: 85vh;
             position: relative;
             overflow: hidden;
         }
         
-        .hero-content {
-            position: relative;
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .hero-image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 40px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            color: white;
             z-index: 2;
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
-            background: var(--bg-overlay);
-            padding: 60px 40px;
-            border-radius: 24px;
-            box-shadow: var(--shadow-lg);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
         }
         
-        .hero h1 {
-            font-size: 4.5rem;
-            font-weight: 800;
-            margin-bottom: 25px;
-            line-height: 1.1;
-            background: var(--red-gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            position: relative;
+        .hero-image-overlay h1 {
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
         }
         
-        .hero-innovation {
-            font-size: 4.5rem;
-            font-weight: 800;
-            text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
-        }
-        
-        .hero-meets-opportunity {
-            font-size: 4.5rem;
-            font-weight: 800;
-            text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
-        }
-        
-        .hero-subtitle {
+        .hero-image-overlay p {
             font-size: 1.3rem;
-            color: var(--text-medium);
-            margin-bottom: 45px;
-            line-height: 1.7;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            margin-top: 35px;
+            max-width: 600px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
         }
         
         /* ===== BUTTONS ===== */
@@ -1210,6 +1185,25 @@
                 padding: 60px 0;
             }
             
+            /* Hero Image Section - Mobile */
+            .hero-image-section {
+                height: 60vh;
+                margin-top: var(--mobile-header-height);
+            }
+            
+            .hero-image-overlay {
+                padding: 25px;
+            }
+            
+            .hero-image-overlay h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-image-overlay p {
+                font-size: 1.1rem;
+                margin-bottom: 20px;
+            }
+            
             /* Mobile Navigation */
             .nav-links {
                 display: none;
@@ -1221,49 +1215,6 @@
             
             .logo-img {
                 height: 30px;
-            }
-            
-            /* Hero Section - Mobile Optimized */
-            .hero {
-                padding-top: calc(var(--mobile-header-height) + 20px);
-                min-height: 85vh;
-            }
-            
-            .hero-content {
-                padding: 40px 25px;
-                margin: 0 13px;
-                border-radius: 20px;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .hero-innovation {
-                font-size: 2rem;
-            }
-            
-            .hero-meets-opportunity {
-                font-size: 2rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.15rem;
-                line-height: 1.6;
-                margin-bottom: 20px;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .hero-buttons .btn {
-                width: 100%;
-                max-width: 300px;
-                margin: 0 auto;
-                padding: 16px 24px;
-                font-size: 1rem;
             }
             
             /* Partner Section - Mobile */
@@ -1477,38 +1428,29 @@
                 padding: 50px 0;
             }
             
-            /* Hero Section - Smaller mobile */
-            .hero {
-                min-height: 80vh;
-                padding-top: calc(var(--mobile-header-height) + 15px);
+            /* Hero Image Section - Smaller mobile */
+            .hero-image-section {
+                height: 50vh;
+                margin-top: var(--mobile-header-height);
             }
             
-            .hero-content {
-                padding: 35px 20px;
-                border-radius: 18px;
+            .hero-image-overlay {
+                padding: 20px;
             }
             
-            .hero h1 {
-                font-size: 2.2rem;
+            .hero-image-overlay h1 {
+                font-size: 1.8rem;
+                margin-bottom: 15px;
             }
             
-            .hero-innovation {
-                font-size: 2.2rem;
+            .hero-image-overlay p {
+                font-size: 1rem;
+                margin-bottom: 15px;
             }
             
-            .hero-meets-opportunity {
-                font-size: 2.2rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.05rem;
-                margin-bottom: 25px;
-                line-height: 1.6;
-            }
-            
-            .hero-buttons .btn {
-                max-width: 280px;
-                padding: 14px 20px;
+            .hero-image-overlay .btn {
+                padding: 12px 20px;
+                font-size: 0.9rem;
             }
             
             /* Partner Section */
@@ -1626,13 +1568,13 @@
     <!-- VERY TRANSPARENT HEADER -->
     <header id="header">
         <div class="container nav-container">
-            <a href="#hero" class="logo">
+            <a href="#hero-image" class="logo">
                 <img src="Picture1.png" alt="BrainLink Logo" class="logo-img">
             </a>
             
             <nav>
                 <div class="nav-links">
-                    <a href="#hero">Home</a>
+                    <a href="#hero-image">Home</a>
                     <a href="#partners">Partners</a>
                     <a href="#about">About</a>
                     <a href="#phases">Phases</a>
@@ -1657,7 +1599,7 @@
         </button>
         
         <div class="mobile-menu-links">
-            <a href="#hero">Home</a>
+            <a href="#hero-image">Home</a>
             <a href="#partners">Partners</a>
             <a href="#about">About BrainLink</a>
             <a href="#phases">Competition Phases</a>
@@ -1671,28 +1613,20 @@
         </a>
     </div>
 
-    <!-- HERO SECTION -->
-    <section id="hero" class="hero">
-        <div class="container">
-            <div class="hero-content fade-in">
-                <h1>
-                    <span class="hero-innovation">Innovation</span>
-                    <span class="hero-meets-opportunity">Meets Opportunity</span>
-                </h1>
-                <p class="hero-subtitle">
-                    Join the innovation challenge that bridges business strategy with engineering excellence. BrainLink brings together the brightest minds to solve real industry challenges with Henkel Algeria.
-                </p>
-                <div class="hero-buttons">
-                    <a href="#register" class="btn btn-primary">
-                        Register Now
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
+    <!-- HERO IMAGE SECTION -->
+    <section id="hero-image" class="hero-image-section">
+        <img src="téléchargement.jpg" alt="BrainLink Innovation Competition" class="hero-image">
+        <div class="hero-image-overlay">
+            <h1>Innovation Meets Opportunity</h1>
+            <p>Join the innovation challenge that bridges business strategy with engineering excellence. BrainLink brings together the brightest minds to solve real industry challenges with Henkel Algeria.</p>
+            <a href="#register" class="btn btn-primary">
+                Register Now
+                <i class="fas fa-arrow-right"></i>
+            </a>
         </div>
     </section>
 
-    <!-- PARTNER SECTION (Now Second) -->
+    <!-- PARTNER SECTION -->
     <section id="partners" class="partner-section">
         <div class="container">
             <div class="partner-header fade-in">
@@ -1719,7 +1653,6 @@
                             <li>Evaluation based on real industry standards and metrics</li>
                         </ul>
                     </div>
-            
                 </div>
             </div>
         </div>
@@ -1775,7 +1708,6 @@
             <div class="section-header fade-in">
                 <h2>Competition Phases</h2>
             </div>
-
 
             <div class="phases-container">
                 <div class="phase-card fade-in">
@@ -1945,7 +1877,7 @@
                     
                     <h4 class="footer-heading">Quick Links</h4>
                     <ul class="footer-links-horizontal">
-                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#hero-image">Home</a></li>
                         <li><a href="#partners">Partners</a></li>
                         <li><a href="#about">About</a></li>
                         <li><a href="#phases">Phases</a></li>
