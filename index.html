@@ -384,49 +384,71 @@
             transform: rotate(90deg);
         }
         
-       /* ===== HERO IMAGE SECTION ===== */
-        .hero-image-section {
-            margin-top: var(--header-height);
-            width: 100%;
-            min-height: 85vh;
-            position: relative;
+        /* ===== HERO SECTION ===== */
+        .hero {
+            min-height: 200vh;
             display: flex;
             align-items: center;
-            justify-content: center;
+            background: transparent;
+            padding-top: calc(var(--header-height) + 10px);
+            position: relative;
             overflow: hidden;
-            padding: 0;
-            background: url('téléchargement.jpg') no-repeat center center;
-            background-size: cover;
         }
         
-        .hero-image-content {
+        .hero-content {
             position: relative;
             z-index: 2;
             text-align: center;
             max-width: 900px;
             margin: 0 auto;
-            padding: 40px;
+            background: var(--bg-overlay);
+            padding: 60px 40px;
+            border-radius: 24px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
         
-        .hero-image-content h1 {
-            font-size: 3.5rem;
+        .hero h1 {
+            font-size: 4.5rem;
             font-weight: 800;
             margin-bottom: 25px;
             line-height: 1.1;
-            color: white;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            background: var(--red-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
             position: relative;
         }
         
-        .hero-image-content p {
+        .hero-innovation {
+            font-size: 4.5rem;
+            font-weight: 800;
+            text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero-meets-opportunity {
+            font-size: 4.5rem;
+            font-weight: 800;
+            text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero-subtitle {
             font-size: 1.3rem;
-            color: white;
+            color: var(--text-medium);
             margin-bottom: 45px;
             line-height: 1.7;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
-            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 35px;
         }
         
         /* ===== BUTTONS ===== */
@@ -1188,26 +1210,6 @@
                 padding: 60px 0;
             }
             
-            /* Hero Image Section - Mobile */
-            .hero-image-section {
-                height: auto;
-                min-height: 80vh;
-                margin-top: var(--mobile-header-height);
-            }
-            
-            .hero-image-content {
-                padding: 30px 20px;
-            }
-            
-            .hero-image-overlay h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero-image-overlay p {
-                font-size: 1.1rem;
-                margin-bottom: 30px;
-            }
-            
             /* Mobile Navigation */
             .nav-links {
                 display: none;
@@ -1219,6 +1221,49 @@
             
             .logo-img {
                 height: 30px;
+            }
+            
+            /* Hero Section - Mobile Optimized */
+            .hero {
+                padding-top: calc(var(--mobile-header-height) + 20px);
+                min-height: 85vh;
+            }
+            
+            .hero-content {
+                padding: 40px 25px;
+                margin: 0 13px;
+                border-radius: 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-innovation {
+                font-size: 2rem;
+            }
+            
+            .hero-meets-opportunity {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.15rem;
+                line-height: 1.6;
+                margin-bottom: 20px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .hero-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+                padding: 16px 24px;
+                font-size: 1rem;
             }
             
             /* Partner Section - Mobile */
@@ -1432,30 +1477,38 @@
                 padding: 50px 0;
             }
             
-            /* Hero Image Section - Smaller mobile */
-            .hero-image-section {
-                min-height: 70vh;
-                margin-top: var(--mobile-header-height);
+            /* Hero Section - Smaller mobile */
+            .hero {
+                min-height: 80vh;
+                padding-top: calc(var(--mobile-header-height) + 15px);
             }
             
-            .hero-image-content {
-                padding: 25px 15px;
+            .hero-content {
+                padding: 35px 20px;
+                border-radius: 18px;
             }
             
-            .hero-image-overlay h1 {
-                font-size: 2rem;
-                margin-bottom: 20px;
+            .hero h1 {
+                font-size: 2.2rem;
             }
             
-            .hero-image-overlay p {
+            .hero-innovation {
+                font-size: 2.2rem;
+            }
+            
+            .hero-meets-opportunity {
+                font-size: 2.2rem;
+            }
+            
+            .hero-subtitle {
                 font-size: 1.05rem;
                 margin-bottom: 25px;
                 line-height: 1.6;
             }
             
-            .hero-image-overlay .btn {
+            .hero-buttons .btn {
+                max-width: 280px;
                 padding: 14px 20px;
-                font-size: 0.9rem;
             }
             
             /* Partner Section */
@@ -1573,13 +1626,13 @@
     <!-- VERY TRANSPARENT HEADER -->
     <header id="header">
         <div class="container nav-container">
-            <a href="#hero-image" class="logo">
+            <a href="#hero" class="logo">
                 <img src="Picture1.png" alt="BrainLink Logo" class="logo-img">
             </a>
             
             <nav>
                 <div class="nav-links">
-                    <a href="#hero-image">Home</a>
+                    <a href="#hero">Home</a>
                     <a href="#partners">Partners</a>
                     <a href="#about">About</a>
                     <a href="#phases">Phases</a>
@@ -1604,7 +1657,7 @@
         </button>
         
         <div class="mobile-menu-links">
-            <a href="#hero-image">Home</a>
+            <a href="#hero">Home</a>
             <a href="#partners">Partners</a>
             <a href="#about">About BrainLink</a>
             <a href="#phases">Competition Phases</a>
@@ -1618,18 +1671,28 @@
         </a>
     </div>
 
-   <!-- HERO IMAGE SECTION -->
-    <section id="hero-image" class="hero-image-section">
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero">
         <div class="container">
-            <div class="hero-image-content fade-in">
-                <h1>Innovation Meets Opportunity</h1>
-                Register Now
-                <i class="fas fa-arrow-right"></i>
-            </a>
+            <div class="hero-content fade-in">
+                <h1>
+                    <span class="hero-innovation">Innovation</span>
+                    <span class="hero-meets-opportunity">Meets Opportunity</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Join the innovation challenge that bridges business strategy with engineering excellence. BrainLink brings together the brightest minds to solve real industry challenges with Henkel Algeria.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#register" class="btn btn-primary">
+                        Register Now
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
-    <!-- PARTNER SECTION -->
+
+    <!-- PARTNER SECTION (Now Second) -->
     <section id="partners" class="partner-section">
         <div class="container">
             <div class="partner-header fade-in">
@@ -1656,6 +1719,7 @@
                             <li>Evaluation based on real industry standards and metrics</li>
                         </ul>
                     </div>
+            
                 </div>
             </div>
         </div>
@@ -1712,6 +1776,7 @@
                 <h2>Competition Phases</h2>
             </div>
 
+
             <div class="phases-container">
                 <div class="phase-card fade-in">
                     <div class="phase-number">01</div>
@@ -1763,7 +1828,7 @@
                     </div>
                 </div>
                 
-                .timeline-item {
+                <div class="timeline-item">
                     <div class="timeline-marker"></div>
                     <div class="timeline-item-content">
                         <h3>Team Formation & Briefing</h3>
@@ -1880,7 +1945,7 @@
                     
                     <h4 class="footer-heading">Quick Links</h4>
                     <ul class="footer-links-horizontal">
-                        <li><a href="#hero-image">Home</a></li>
+                        <li><a href="#hero">Home</a></li>
                         <li><a href="#partners">Partners</a></li>
                         <li><a href="#about">About</a></li>
                         <li><a href="#phases">Phases</a></li>
